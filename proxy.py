@@ -411,6 +411,14 @@ async def proxy_handler(request: web.Request):
             data = json.loads(body)
             modified = False
 
+            # Strip defer_loading from tools (client-side field, Bedrock rejects it)
+            tools = data.get("tools")
+            if tools and isinstance(tools, list):
+                for t in tools:
+                    if isinstance(t, dict) and "defer_loading" in t:
+                        del t["defer_loading"]
+                        modified = True
+
             # Thinking/effort modification
             thinking_modified, thinking_action = _modify_thinking(data, model_lower)
             if thinking_modified:
