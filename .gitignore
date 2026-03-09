@@ -3,3 +3,4 @@ proxy.pid
 __pycache__/
 *.pyc
 .env
+bedrock-proxy-go
