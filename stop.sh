@@ -13,5 +13,5 @@ if [ -f proxy.pid ]; then
 else
     echo "No PID file found"
     # Try to find and kill anyway
-    pkill -f "python3 proxy.py" 2>/dev/null && echo "Killed orphan proxy process" || true
+    pkill -f "bedrock-proxy-go" 2>/dev/null && echo "Killed orphan proxy process" || true
 fi

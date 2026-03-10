@@ -120,7 +120,14 @@ curl http://127.0.0.1:8888/health
 
 ## 依赖
 
-- Python 3.9+
-- `aiohttp`
-- `botocore`
-- `yarl`
+- Go 1.21+（默认，推荐）
+
+### Python 版本（deprecated）
+
+`proxy.py` 为早期 Python 实现，已废弃，不再维护。如需使用：
+
+```bash
+python3 proxy.py >> proxy.log 2>&1 &
+```
+
+依赖：Python 3.9+、`aiohttp`、`botocore`、`yarl`

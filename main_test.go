@@ -366,8 +366,8 @@ func TestStripDeferLoading(t *testing.T) {
 		map[string]any{"name": "t1"},
 		map[string]any{"name": "t2", "defer_loading": true},
 	}
-	for _, t := range tools {
-		if tool, ok := t.(map[string]any); ok {
+	for _, item := range tools {
+		if tool, ok := item.(map[string]any); ok {
 			delete(tool, "defer_loading")
 		}
 	}

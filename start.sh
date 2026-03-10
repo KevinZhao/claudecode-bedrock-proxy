@@ -9,15 +9,21 @@ fi
 
 export AWS_REGION="${AWS_REGION:-ap-northeast-1}"
 
-echo "Starting Bedrock Effort Max Proxy..."
+# Build Go binary if not present
+if [ ! -f bedrock-proxy-go ]; then
+    echo "Building Go proxy..."
+    go build -o bedrock-proxy-go .
+fi
+
+echo "Starting Bedrock Effort Max Proxy (Go)..."
 : > proxy.log  # truncate log
-python3 proxy.py >> proxy.log 2>&1 &
+./bedrock-proxy-go >> proxy.log 2>&1 &
 echo $! > proxy.pid
 
 for i in $(seq 1 20); do
     if curl -sf http://127.0.0.1:8888/health > /dev/null 2>&1; then
         echo "Proxy started (PID: $(cat proxy.pid))"
-        curl -s http://127.0.0.1:8888/health | python3 -m json.tool
+        curl -s http://127.0.0.1:8888/health
         exit 0
     fi
     sleep 0.25
