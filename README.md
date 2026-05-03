@@ -1,3 +1,26 @@
+> # ⚠️ 本项目已归档（Archived / No Longer Maintained）
+>
+> **更新日期：2026-05-03**
+>
+> 本 proxy 最初用于弥补 Claude Code 在 Bedrock 场景下的一些配置传递缺陷（effort level、thinking mode、1h prompt cache TTL、1M context beta、subagent 配置继承等）。
+>
+> **随着 Claude Code 版本迭代，上述绝大多数功能 CC 本身已经原生支持**（包括主线程与 subagent 的配置一致性、1h cache TTL、effort=max、adaptive thinking、1M context 等）。因此本 proxy 的核心价值已被 CC 官方覆盖，**不再需要作为 CC 使用 Bedrock 的必备组件**。
+>
+> ## 建议
+>
+> - **Claude Code + Bedrock 用户：** 直接使用 CC 官方的 Bedrock 支持即可，无需部署本 proxy。相关配置参考 [Claude Code 官方文档](https://docs.claude.com/en/docs/claude-code/amazon-bedrock)。
+> - **其他使用 Anthropic Messages API 格式的应用（Cursor、Continue、Cline 等）：** 如果仍需要在这些工具中访问 Bedrock 并获得 prompt caching 注入、model ID 映射等增强，本仓库代码可作为参考实现，但已不再维护，使用风险自负。
+>
+> ## 仓库状态
+>
+> - ❌ 不再接受 issue 与 PR
+> - ❌ 不再发布新版本
+> - ✅ 代码将保留作为历史参考
+>
+> 感谢所有使用过本项目的朋友。下面的原始文档保留以供参考。
+>
+> ---
+
 # Bedrock Effort Max Proxy
 
 本地反向代理，部署在 Claude Code CLI 与 AWS Bedrock 之间，用于弥补 Claude Code 在 Bedrock 场景下的已知不足。
